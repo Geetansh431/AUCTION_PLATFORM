@@ -76,7 +76,6 @@ export const errorMiddleware = (err, req, res, next) => {
             .join(" ");
         err = new ErrorHandler(errorMessage, 400);
     }
-
     return res.status(err.statusCode).json({
         success: false,
         status: err.status || "error",

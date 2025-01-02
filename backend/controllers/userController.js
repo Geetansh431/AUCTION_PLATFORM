@@ -1,8 +1,10 @@
+import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
 import { User } from "../models/userSchema.js"
 import { v2 as cloudinary } from "cloudinary"
+import { generateToken } from "../utils/jwtToken.js";
 
-export const register = async (req, res, next) => {
+export const register = catchAsyncErrors(async (req, res, next) => {
 
     if (!req.files || Object.keys(req.files).length === 0) {
         return next(new ErrorHandler("Profile Image Required.", 400))
@@ -10,7 +12,7 @@ export const register = async (req, res, next) => {
 
     const { profileImage } = req.files
 
-    const allowedFormats = ['image/png', 'image/jpeg', 'image/webp', 'image/jpg' ,]
+    const allowedFormats = ['image/png', 'image/jpeg', 'image/webp', 'image/jpg',]
     if (!allowedFormats.includes(profileImage.mimetype)) {
         return next(new ErrorHandler("File format not supported", 400))
     }
@@ -34,17 +36,20 @@ export const register = async (req, res, next) => {
         return next(new ErrorHandler("Please enter all user details", 400))
     }
 
-    if (role == "Auctioneer") {
+    if (role === "Auctioneer") {
         if (!bankAccountName || !bankAccountNumber || !bankName) {
-            return next(new ErrorHandler("Please Provide your full bank details"))
+            return next(
+                new ErrorHandler("Please provide your full bank details.", 400)
+            );
         }
-    }
-
-    if (!razorpayAccountNumber) {
-        return next(new ErrorHandler("Please Provide your razorpayAccountNumber details"))
-    }
-    if (!paypalEmail) {
-        return next(new ErrorHandler("Please Provide your payapl email"))
+        if (!razorpayAccountNumber) {
+            return next(
+                new ErrorHandler("Please provide your razorpay account number.", 400)
+            );
+        }
+        if (!paypalEmail) {
+            return next(new ErrorHandler("Please provide your paypal email.", 400));
+        }
     }
 
     const isRegistered = await User.findOne({ email });
@@ -84,8 +89,5 @@ export const register = async (req, res, next) => {
         },
     });
 
-    res.status(201).json({
-        success:true,
-        message: "User Registered."
-    })
-};
+    generateToken(user, "User Registered.", 201, res)
+})
