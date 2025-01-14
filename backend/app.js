@@ -2,7 +2,6 @@ import { config } from "dotenv";
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser";
-// import fileUpload from "express-fileupload";
 import { connection } from "./database/connection.js";
 import { errorMiddleware } from "./middlewares/error.js";
 import userRouter from "./router/userRoutes.js"
@@ -28,7 +27,14 @@ app.use(fileUpload({
     useTempFiles: true, // Correct setting for temporary file storage
     tempFileDir: "/tmp/" // Directory for temporary files
 }));
-// app.use(fileUpload({ useTempFiles: true }));
+
+app.get("/", (req, res) => {
+    console.log("Test endpoint hit!");
+    res.status(200).json({
+        success: true,
+        message: "API is working correctly!"
+    });
+});
 
 app.use("/api/v1/user", userRouter)
 app.use("/api/v1/auctionitem", auctionItemRouter)
