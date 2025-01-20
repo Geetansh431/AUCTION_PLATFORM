@@ -9,10 +9,11 @@ import {
 
 import { isAuthenticated, isAuthorized } from "../middlewares/auth.js";
 import express from "express";
+import { trackComissionStatus } from "../middlewares/trackCommissionStatus.js";
 
 const router = express.Router();
 
-router.post("/create", isAuthenticated, isAuthorized("Auctioneer"), addNewAuctionItem);
+router.post("/create", isAuthenticated, isAuthorized("Auctioneer"), trackComissionStatus, addNewAuctionItem);
 router.get("/allitems", getAllItems);
 router.get("/auction/:id", isAuthenticated, getAuctionDetails);
 router.get("/myitems", isAuthenticated, isAuthorized("Auctioneer"), getMyAuctionItems);
