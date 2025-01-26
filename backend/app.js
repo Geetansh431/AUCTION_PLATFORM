@@ -8,6 +8,7 @@ import userRouter from "./router/userRoutes.js"
 import fileUpload from "express-fileupload";
 import auctionItemRouter from "./router/auctionItemRoutes.js"
 import bidRouter from "./router/bidRoutes.js"
+import commissionRouter from "./router/commissionRouter.js"
 
 const app = express();
 config({
@@ -40,7 +41,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auctionitem", auctionItemRouter);
 app.use("/api/v1/bid", bidRouter);
-
+app.use("/api/v1/commission", commissionRouter)
 connection();
 app.use(errorMiddleware)
 
