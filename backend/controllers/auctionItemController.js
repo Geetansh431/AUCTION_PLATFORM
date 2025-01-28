@@ -4,6 +4,7 @@ import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js"
 import ErrorHandler from "../middlewares/error.js"
 import cloudinary from "cloudinary"
 import mongoose from "mongoose"
+import { Bid } from "../models/bidSchema.js"
 
 export const addNewAuctionItem = catchAsyncErrors(async (req, res, next) => {
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -167,16 +168,24 @@ export const republishItem = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Auction starting time must be less than ending time.", 400));
     }
 
+    if (auctionItem.highestBidder) {
+        const highestBidder = await User.findById(auctionItem.highestBidder);
+        highestBidder.moneySpent -= auctionItem.currentBid;
+        highestBidder.auctionsWon -= 1;
+        highestBidder.save();
+    }
+
     data.bids = [];
     data.commissionCalculated = false;
-
+    data.currentBid = 0;
+    data.highestBidder = null;
 
     auctionItem = await Auction.findByIdAndUpdate(id, data, {
         new: true,
         runValidators: true,
         useFindAndModify: false
     });
-
+    await Bid.deleteMany({ auctionItem: auctionItem._id });
     const createdBy = await User.findByIdAndUpdate(req.user._id, { unpaidComission: 0 }, {
         new: true,
         runValidators: false,
