@@ -59,73 +59,73 @@ const SignUp = () => {
     };
 
     return (
-        <section className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 lg:pl-72">
+        <section className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 lg:pl-72">
             <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-                <div className="bg-white rounded-3xl shadow-lg backdrop-blur-sm bg-opacity-95 p-6 sm:p-8 lg:p-10 border border-gray-100">
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-10 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent tracking-tight">
+                <div className="bg-gray-800 rounded-3xl shadow-lg backdrop-blur-sm bg-opacity-95 p-6 sm:p-8 lg:p-10 border border-gray-700 animate-fade-in">
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-10 text-center bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent tracking-tight animate-slide-up">
                         Create Your Account
                     </h1>
 
                     <form className="space-y-10" onSubmit={handleRegister}>
                         <div className="space-y-8">
-                            <div className="flex items-center gap-3 mb-8">
-                                <h2 className="text-2xl font-semibold text-gray-800">Personal Details</h2>
-                                <div className="flex-grow h-px bg-gradient-to-r from-indigo-100 to-purple-100"></div>
+                            <div className="flex items-center gap-3 mb-8 animate-slide-up">
+                                <h2 className="text-2xl font-semibold text-gray-200">Personal Details</h2>
+                                <div className="flex-grow h-px bg-gradient-to-r from-indigo-400/20 to-purple-400/20"></div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 animate-slide-up">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Full Name</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Full Name</label>
                                     <input
                                         type="text"
                                         value={userName}
                                         onChange={(e) => setUserName(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100"
                                         placeholder="John Doe"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Email</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Email</label>
                                     <input
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100"
                                         placeholder="john@example.com"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 animate-slide-up">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Phone</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Phone</label>
                                     <input
                                         type="number"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100"
                                         placeholder="+1234567890"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Address</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Address</label>
                                     <input
                                         type="text"
                                         value={address}
                                         onChange={(e) => setAddress(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100"
                                         placeholder="123 Street, City"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 animate-slide-up">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Role</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Role</label>
                                     <select
                                         value={role}
                                         onChange={(e) => setRole(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70 cursor-pointer"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100 cursor-pointer"
                                     >
                                         <option value="">Select Role</option>
                                         <option value="Auctioneer">Auctioneer</option>
@@ -133,19 +133,19 @@ const SignUp = () => {
                                     </select>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Password</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Password</label>
                                     <input
                                         type="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100"
                                         placeholder="••••••••"
                                     />
                                 </div>
                             </div>
 
-                            <div className="space-y-3">
-                                <label className="text-sm font-medium text-gray-700 tracking-wide">Profile Image</label>
+                            <div className="space-y-3 animate-slide-up">
+                                <label className="text-sm font-medium text-gray-300 tracking-wide">Profile Image</label>
                                 <div className="flex items-center gap-6">
                                     <div className="relative group">
                                         <img
@@ -160,28 +160,28 @@ const SignUp = () => {
                                     <input
                                         type="file"
                                         onChange={imageHandler}
-                                        className="text-sm text-gray-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-medium file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer transition-all duration-200"
+                                        className="text-sm text-gray-300 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-medium file:bg-indigo-500/10 file:text-indigo-400 hover:file:bg-indigo-500/20 cursor-pointer transition-all duration-200"
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <div className="space-y-8">
+                        <div className="space-y-8 animate-slide-up">
                             <div className="flex items-center gap-3">
-                                <h2 className="text-2xl font-semibold text-gray-800">Payment Details</h2>
-                                <div className="flex-grow h-px bg-gradient-to-r from-indigo-100 to-purple-100"></div>
+                                <h2 className="text-2xl font-semibold text-gray-200">Payment Details</h2>
+                                <div className="flex-grow h-px bg-gradient-to-r from-indigo-400/20 to-purple-400/20"></div>
                             </div>
-                            <p className="text-sm text-gray-500 -mt-6">Required only for Auctioneer registration</p>
+                            <p className="text-sm text-gray-400 -mt-6">Required only for Auctioneer registration</p>
 
                             <div className="space-y-8">
                                 <div className="space-y-3">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Bank Details</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Bank Details</label>
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                         <select
                                             value={bankName}
                                             onChange={(e) => setBankName(e.target.value)}
                                             disabled={role === "Bidder"}
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/30"
+                                            className="px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-700/30"
                                         >
                                             <option value="">Select Your Bank</option>
                                             <option value="SBI Bank">SBI Bank</option>
@@ -195,7 +195,7 @@ const SignUp = () => {
                                             placeholder="IBAN / IFSC"
                                             onChange={(e) => setBankAccountNumber(e.target.value)}
                                             disabled={role === "Bidder"}
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/30"
+                                            className="px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-700/30"
                                         />
                                         <input
                                             type="text"
@@ -203,13 +203,13 @@ const SignUp = () => {
                                             placeholder="Bank Account Name"
                                             onChange={(e) => setBankAccountName(e.target.value)}
                                             disabled={role === "Bidder"}
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/30"
+                                            className="px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-700/30"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-sm font-medium text-gray-700 tracking-wide">Online Payment Details</label>
+                                    <label className="text-sm font-medium text-gray-300 tracking-wide">Online Payment Details</label>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <input
                                             type="number"
@@ -217,7 +217,7 @@ const SignUp = () => {
                                             placeholder="Razorpay Account Number"
                                             onChange={(e) => setRazorpayAccountNumber(e.target.value)}
                                             disabled={role === "Bidder"}
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/30"
+                                            className="px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-700/30"
                                         />
                                         <input
                                             type="email"
@@ -225,7 +225,7 @@ const SignUp = () => {
                                             placeholder="PayPal Email"
                                             onChange={(e) => setPaypalEmail(e.target.value)}
                                             disabled={role === "Bidder"}
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-50/30 hover:bg-gray-50/70 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-50/30"
+                                            className="px-4 py-3 rounded-xl border border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/30 hover:bg-gray-700/50 text-gray-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-700/30"
                                         />
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@ const SignUp = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-indigo-500/20"
+                            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl font-medium hover:from-indigo-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-indigo-500/20 animate-slide-up"
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -279,6 +279,26 @@ const SignUp = () => {
                     </form>
                 </div>
             </div>
+
+            <style jsx global>{`
+                @keyframes fade-in {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+
+                @keyframes slide-up {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+                .animate-fade-in {
+                    animation: fade-in 0.8s ease-out forwards;
+                }
+
+                .animate-slide-up {
+                    animation: slide-up 0.8s ease-out forwards;
+                }
+            `}</style>
         </section>
     );
 };

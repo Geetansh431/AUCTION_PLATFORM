@@ -140,7 +140,7 @@ const SideDrawer = () => {
                         <IoMdCloseCircleOutline className="w-6 h-6" />
                     </button>
 
-                    <div className="mt-8 px-4 py-6 border-t border-slate-800/50">
+                    <div className="mt-16 px-4 py-6 border-t border-slate-800/50">
                         <div className="flex gap-3 mb-4">
                             <Link 
                                 to="/" 
