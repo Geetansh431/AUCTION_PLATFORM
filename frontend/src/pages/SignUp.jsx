@@ -149,7 +149,7 @@ const SignUp = () => {
                                 <div className="flex items-center gap-6">
                                     <div className="relative group">
                                         <img
-                                            src={profileImagePreview ? profileImagePreview : '/imageHolder.jpg'}
+                                            src={profileImagePreview ? profileImagePreview : '/imageHolder.webp'}
                                             alt="profileImagePreview"
                                             className="w-20 h-20 rounded-2xl object-cover border-2 border-indigo-500/30 group-hover:border-indigo-500 transition-all duration-200"
                                         />
