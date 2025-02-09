@@ -45,7 +45,7 @@ const SideDrawer = () => {
             </button>
 
             <div className={`w-full sm:w-72 bg-slate-950/95 min-h-screen fixed top-0 ${show ? "left-0" : "-left-full"} transition-all duration-500 lg:left-0 border-r border-slate-800/50 shadow-2xl z-40 backdrop-blur-2xl`}>
-                <div className="h-full flex flex-col p-6">
+                <div className="h-full flex flex-col p-2">
                     <Link to="/" className="block mb-8 px-4">
                         <h4 className="text-3xl font-black tracking-tight">
                             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent animate-gradient">Bid</span>
@@ -53,7 +53,7 @@ const SideDrawer = () => {
                         </h4>
                     </Link>
 
-                    <nav className="flex-1 space-y-8">
+                    <nav className="flex-1 space-y-4">
                         <div>
                             <div className="px-4 mb-3">
                                 <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
