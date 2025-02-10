@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postCommissionProof } from "@/store/slices/commissionSlice";
 import { Upload, DollarSign, MessageSquare, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const SubmitCommission = () => {
   const [proof, setProof] = useState("");
@@ -11,6 +12,28 @@ const SubmitCommission = () => {
 
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.commission);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   const proofHandler = (e) => {
     const file = e.target.files[0];
@@ -46,77 +69,141 @@ const SubmitCommission = () => {
   };
 
   return (
-    <div className="h-screen bg-slate-950 lg:pl-72 pt-8">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="bg-slate-900/80 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 border border-slate-800/50 relative overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 lg:pl-72 pt-8">
+      <motion.div 
+        className="max-w-3xl mx-auto px-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div 
+          className="bg-gray-800/80 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 border border-gray-700 relative overflow-hidden"
+          whileHover={{ scale: 1.01 }}
+          transition={{ duration: 0.3 }}
+        >
           {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 blur-3xl rounded-full -mr-32 -mt-32" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-fuchsia-500/20 to-violet-500/20 blur-3xl rounded-full -ml-32 -mb-32" />
+          <motion.div 
+            className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-3xl rounded-full -mr-32 -mt-32"
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0]
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-purple-500/20 to-indigo-500/20 blur-3xl rounded-full -ml-32 -mb-32"
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, -90, 0]
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
 
           {/* Glass effect overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-800/30 backdrop-blur-sm rounded-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-800/30 backdrop-blur-sm rounded-3xl" />
 
           <div className="relative">
-            <div className="mb-6 text-center">
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent">
+            <motion.div 
+              className="mb-6 text-center"
+              variants={itemVariants}
+            >
+              <motion.h2 
+                className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent"
+                whileHover={{ scale: 1.05 }}
+              >
                 Submit Commission
-              </h2>
-              <p className="mt-2 text-gray-400">Complete your commission submission in seconds</p>
-            </div>
+              </motion.h2>
+              <motion.p 
+                className="mt-2 text-gray-400"
+                variants={itemVariants}
+              >
+                Complete your commission submission in seconds
+              </motion.p>
+            </motion.div>
 
             <form onSubmit={handlePaymentProof} className="grid grid-cols-2 gap-5">
               {/* Amount Input */}
-              <div className="col-span-1 group">
-                <label className="text-sm font-medium text-gray-400 flex items-center gap-2 mb-2">
-                  <div className="p-1.5 bg-slate-800/50 rounded-lg group-hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-colors">
-                    <DollarSign className="w-4 h-4 text-violet-400" />
-                  </div>
+              <motion.div 
+                className="col-span-1 group"
+                variants={itemVariants}
+              >
+                <label className="text-sm font-medium text-gray-300 flex items-center gap-2 mb-2">
+                  <motion.div 
+                    className="p-1.5 bg-gray-700/50 rounded-lg group-hover:bg-gradient-to-r from-indigo-500 to-purple-500 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <DollarSign className="w-4 h-4 text-indigo-400" />
+                  </motion.div>
                   Amount
                 </label>
-                <input
+                <motion.input
                   type="number"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-800/50 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-slate-800/50 hover:bg-slate-800/80 text-gray-300 placeholder-gray-500"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/50 hover:bg-gray-700/80 text-gray-100 placeholder-gray-500"
                   placeholder="Enter amount"
+                  whileFocus={{ scale: 1.02 }}
                 />
-              </div>
+              </motion.div>
 
               {/* Comment Input */}
-              <div className="col-span-1 group">
-                <label className="text-sm font-medium text-gray-400 flex items-center gap-2 mb-2">
-                  <div className="p-1.5 bg-slate-800/50 rounded-lg group-hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-colors">
-                    <MessageSquare className="w-4 h-4 text-violet-400" />
-                  </div>
+              <motion.div 
+                className="col-span-1 group"
+                variants={itemVariants}
+              >
+                <label className="text-sm font-medium text-gray-300 flex items-center gap-2 mb-2">
+                  <motion.div 
+                    className="p-1.5 bg-gray-700/50 rounded-lg group-hover:bg-gradient-to-r from-indigo-500 to-purple-500 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <MessageSquare className="w-4 h-4 text-indigo-400" />
+                  </motion.div>
                   Comment
                 </label>
-                <textarea
+                <motion.textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   rows={1}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-800/50 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200 bg-slate-800/50 hover:bg-slate-800/80 text-gray-300 placeholder-gray-500 resize-none"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-gray-700/50 hover:bg-gray-700/80 text-gray-100 placeholder-gray-500 resize-none"
                   placeholder="Add comments..."
+                  whileFocus={{ scale: 1.02 }}
                 />
-              </div>
+              </motion.div>
 
               {/* Payment Proof Upload */}
-              <div className="col-span-2 group">
-                <label className="text-sm font-medium text-gray-400 flex items-center gap-2 mb-2">
-                  <div className="p-1.5 bg-slate-800/50 rounded-lg group-hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-colors">
-                    <Upload className="w-4 h-4 text-violet-400" />
-                  </div>
+              <motion.div 
+                className="col-span-2 group"
+                variants={itemVariants}
+              >
+                <label className="text-sm font-medium text-gray-300 flex items-center gap-2 mb-2">
+                  <motion.div 
+                    className="p-1.5 bg-gray-700/50 rounded-lg group-hover:bg-gradient-to-r from-indigo-500 to-purple-500 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Upload className="w-4 h-4 text-indigo-400" />
+                  </motion.div>
                   Payment Proof
                 </label>
-                <div
+                <motion.div
                   className={`relative border-2 rounded-xl transition-all ${
                     dragActive
-                      ? "border-violet-500 bg-violet-500/10"
-                      : "border-slate-800/50 hover:border-violet-500"
+                      ? "border-indigo-500 bg-indigo-500/10"
+                      : "border-gray-700 hover:border-indigo-500"
                   }`}
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}
                   onDragOver={handleDrag}
                   onDrop={handleDrop}
+                  whileHover={{ scale: 1.02 }}
+                  animate={dragActive ? { scale: 1.03 } : { scale: 1 }}
                 >
                   <input
                     type="file"
@@ -125,39 +212,56 @@ const SubmitCommission = () => {
                     accept="image/*"
                   />
                   <div className="text-center py-5">
-                    <div className="w-14 h-14 mx-auto bg-gradient-to-br from-slate-800/50 to-slate-800/30 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                      <Upload className="h-6 w-6 text-violet-400" />
-                    </div>
+                    <motion.div 
+                      className="w-14 h-14 mx-auto bg-gradient-to-br from-gray-700/50 to-gray-700/30 rounded-2xl flex items-center justify-center"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <Upload className="h-6 w-6 text-indigo-400" />
+                    </motion.div>
                     <div className="mt-2 flex text-sm leading-6 text-gray-400 justify-center items-center gap-1">
-                      <span className="font-semibold text-violet-400">Choose a file</span>
+                      <span className="font-semibold text-indigo-400">Choose a file</span>
                       <span>or drag and drop</span>
                     </div>
-                    {proof && (
-                      <div className="mt-2 text-sm text-violet-400 bg-gradient-to-r from-slate-800/50 to-slate-800/30 py-1.5 px-4 rounded-lg inline-block">
-                        {proof.name}
-                      </div>
-                    )}
+                    <AnimatePresence>
+                      {proof && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="mt-2 text-sm text-indigo-400 bg-gradient-to-r from-gray-700/50 to-gray-700/30 py-1.5 px-4 rounded-lg inline-block"
+                        >
+                          {proof.name}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
                 disabled={loading}
-                className="col-span-2 py-4 px-6 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-violet-500/25 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
+                className="col-span-2 py-4 px-6 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/25 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span className="text-lg">{loading ? "Uploading..." : "Submit Payment Proof"}</span>
                 {loading ? (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <motion.div 
+                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  />
                 ) : (
                   <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                 )}
-              </button>
+              </motion.button>
             </form>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
