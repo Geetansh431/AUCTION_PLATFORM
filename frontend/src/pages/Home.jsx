@@ -198,7 +198,7 @@ const Home = () => {
                 <div className={`absolute inset-0 bg-gradient-to-br ${element.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
 
                 {/* Card content */}
-                <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-8 h-full border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
+                <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-4 h-full border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
                   {/* Icon container */}
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${element.gradient} p-0.5 mb-8 group-hover:scale-110 transition-transform duration-300`}>
                     <div className="w-full h-full bg-gray-900/90 rounded-2xl flex items-center justify-center">
@@ -237,10 +237,6 @@ const Home = () => {
           </motion.div>
         </div>
       </motion.div>
-
-      <FeaturedAuctions />
-      <Leaderboard />
-      <UpcomingAuctions />
     </section>
   );
 };
