@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Clock } from "lucide-react";
 
 function Card({ imgSrc, title, startingBid, startTime, endTime, id }) {
     const calculateTimeLeft = () => {
@@ -40,37 +41,61 @@ function Card({ imgSrc, title, startingBid, startTime, endTime, id }) {
         const pad = (num) => String(num).padStart(2, "0");
         return `(${days} Days) ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
     };
+
     return (
-        <>
-            <Link
-                to={`/auction/item/${id}`}
-                className="flex-grow basis-full bg-white rounded-md group sm:basis-56 lg:basis-60 2xl:basis-80"
-            >
-                <img src={imgSrc} alt={title} className="w-full aspect-auto[4/3] m-auto md:p-12" />
-                <div className="px-2 pt-4 pb-2">
-                    <h5 className="font-semibold text-[18px] group-hover:text-[#d6482b] mb-2">{title}</h5>
-                    {startingBid && (
-                        <p className="text-stone-600 font-light">
-                            Starting Bid:{" "}
-                            <span className="text-[#fdba88] font-bold ml-1">
-                                {startingBid}
-                            </span>
-                        </p>
-                    )}
-                    <p className="text-stone-600 font-light">
-                        {timeLeft.type}
-                        {Object.keys(timeLeft).length > 1 ? (
-                            <span className="text-[#fdba88] font-bold m1-1">
-                                {formatTimeLeft(timeLeft)}
-                            </span>
-                        ) : (
-                            <span className="text-[#fdba88] font-bold m1-1">Time's up!</span>
-                        )}
-                    </p>
+        <Link
+            to={`/auction/item/${id}`}
+            className="group relative flex-grow basis-full sm:basis-56 lg:basis-60 2xl:basis-80"
+        >
+            {/* Card background effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-purple-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+
+            {/* Card content */}
+            <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
+                {/* Image container */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                        src={imgSrc}
+                        alt={title}
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
                 </div>
-            </Link>
-        </>
-    )
+
+                {/* Content section */}
+                <div className="p-6 space-y-4">
+                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 truncate">
+                        {title}
+                    </h3>
+
+                    <div className="space-y-4">
+                        {startingBid && (
+                            <div className="flex items-center justify-between">
+                                <span className="text-gray-400">Starting Bid</span>
+                                <span className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                                    {startingBid}
+                                </span>
+                            </div>
+                        )}
+
+                        <div className="flex items-center justify-between">
+                            <span className="text-gray-400 flex items-center gap-2">
+                                <Clock className="w-4 h-4" />
+                                {timeLeft.type}
+                            </span>
+                            <span className="text-orange-400 font-medium">
+                                {Object.keys(timeLeft).length > 1 ? (
+                                    formatTimeLeft(timeLeft)
+                                ) : (
+                                    "Time's up!"
+                                )}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
 }
 
-export default Card
+export default Card;
