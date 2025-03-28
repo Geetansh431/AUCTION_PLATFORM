@@ -47,12 +47,10 @@ function Card({ imgSrc, title, startingBid, startTime, endTime, id }) {
             to={`/auction/item/${id}`}
             className="group relative flex-grow basis-full sm:basis-56 lg:basis-60 2xl:basis-80"
         >
-            {/* Card background effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 to-purple-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
 
-            {/* Card content */}
             <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
-                {/* Image container */}
+  
                 <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                         src={imgSrc}
@@ -62,7 +60,6 @@ function Card({ imgSrc, title, startingBid, startTime, endTime, id }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
                 </div>
 
-                {/* Content section */}
                 <div className="p-6 space-y-4">
                     <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 truncate">
                         {title}

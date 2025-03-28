@@ -59,7 +59,7 @@ const About = () => {
                 initial="hidden"
                 animate="visible"
             >
-                {/* About Us Section */}
+               
                 <motion.div
                     className="space-y-4 relative"
                     variants={itemVariants}
@@ -77,7 +77,7 @@ const About = () => {
                     </p>
                 </motion.div>
 
-                {/* Mission Section */}
+                
                 <motion.div
                     className="bg-gray-800/80 backdrop-blur-2xl rounded-3xl p-8 border border-gray-700 relative overflow-hidden hover:border-indigo-500/50 transition-all duration-300"
                     variants={itemVariants}
@@ -98,7 +98,7 @@ const About = () => {
                     </div>
                 </motion.div>
 
-                {/* Values Section */}
+               
                 <motion.div variants={itemVariants} className="relative">
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-purple-500/20 to-indigo-500/20 blur-3xl rounded-full -ml-32 -mb-32" />
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 relative">
@@ -131,8 +131,7 @@ const About = () => {
                         ))}
                     </div>
                 </motion.div>
-
-                {/* Story Section */}
+    
                 <motion.div
                     className="bg-gray-800/80 backdrop-blur-2xl rounded-3xl p-8 border border-gray-700 relative overflow-hidden hover:border-indigo-500/50 transition-all duration-300"
                     variants={itemVariants}
@@ -153,7 +152,7 @@ const About = () => {
                     </div>
                 </motion.div>
 
-                {/* Join Us Section */}
+               
                 <motion.div
                     className="bg-gray-800/80 backdrop-blur-2xl rounded-3xl p-8 border border-gray-700 relative overflow-hidden hover:border-indigo-500/50 transition-all duration-300"
                     variants={itemVariants}

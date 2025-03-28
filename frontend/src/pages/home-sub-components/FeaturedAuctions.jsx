@@ -25,7 +25,6 @@ const FeaturedAuctions = () => {
 
   return (
     <div className="relative w-full">
-      {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-3xl rounded-full -mr-48 -mt-48 animate-pulse" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-500/20 to-pink-500/20 blur-3xl rounded-full -ml-48 -mb-48 animate-pulse" />
 
@@ -35,7 +34,6 @@ const FeaturedAuctions = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Enhanced header */}
         <motion.div 
           className="px-8"
           variants={itemVariants}
@@ -45,7 +43,6 @@ const FeaturedAuctions = () => {
           </h3>
         </motion.div>
 
-        {/* Enhanced grid */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 p-8"
           variants={containerVariants}
@@ -58,7 +55,7 @@ const FeaturedAuctions = () => {
               transition={{ duration: 0.3 }}
               className="relative group"
             >
-              {/* Hover spotlight effect */}
+  
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-70 blur-xl transition-all duration-500" />
               
               <div className="relative">
@@ -74,8 +71,6 @@ const FeaturedAuctions = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Enhanced loading state */}
         {loading && (
           <motion.div 
             className="fixed inset-0 bg-gray-900/80 backdrop-blur-xl flex items-center justify-center z-50"
