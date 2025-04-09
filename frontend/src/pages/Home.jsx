@@ -81,12 +81,12 @@ const Home = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Hero Section */}
+
         <motion.div
           className="relative overflow-hidden rounded-3xl bg-gray-800/30 backdrop-blur-xl p-6 sm:p-8 lg:p-12"
           variants={itemVariants}
         >
-          {/* Enhanced decorative elements */}
+          
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-3xl rounded-full -mr-48 -mt-48 animate-pulse" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-500/20 to-indigo-500/20 blur-3xl rounded-full -ml-48 -mb-48 animate-pulse" />
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm" />
@@ -139,7 +139,7 @@ const Home = () => {
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
-                    to="/login"
+                    to="/sign-in"
                     className="w-full sm:w-auto inline-flex items-center justify-center bg-gray-800/80 backdrop-blur-xl text-white font-semibold text-base sm:text-lg rounded-xl px-6 sm:px-8 py-3 sm:py-4 hover:shadow-lg hover:border-indigo-500/50 border-2 border-gray-700 transition-all duration-300"
                   >
                     Login to Your Account
@@ -150,7 +150,7 @@ const Home = () => {
           </div>
         </motion.div>
 
-        {/* How it works Section */}
+       
         <motion.div
           className="space-y-8 sm:space-y-12 relative px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16"
           variants={itemVariants}
@@ -173,7 +173,7 @@ const Home = () => {
               </motion.p>
             </div>
             <motion.a
-              href="#"
+              href="/how-it-works-info"
               className="flex items-center gap-2 text-base sm:text-lg text-blue-400 hover:text-blue-300 transition-colors duration-300 group"
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
@@ -194,19 +194,19 @@ const Home = () => {
                 variants={cardVariants}
                 whileHover="hover"
               >
-                {/* Animated background gradient */}
+               
                 <div className={`absolute inset-0 bg-gradient-to-br ${element.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
 
-                {/* Card content */}
+                
                 <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-4 h-full border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
-                  {/* Icon container */}
+                  
                   <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${element.gradient} p-0.5 mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300`}>
                     <div className="w-full h-full bg-gray-900/90 rounded-2xl flex items-center justify-center">
                       <element.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${element.iconColor}`} />
                     </div>
                   </div>
 
-                  {/* Text content */}
+                 
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 group-hover:text-blue-400 transition-colors duration-300">
                     {element.title}
                   </h3>
@@ -214,7 +214,7 @@ const Home = () => {
                     {element.description}
                   </p>
 
-                  {/* Step indicator */}
+             
                   <div className="absolute top-6 sm:top-8 right-6 sm:right-8 text-xs sm:text-sm font-medium text-gray-500">
                     {String(index + 1).padStart(2, '0')}
                   </div>
@@ -224,7 +224,7 @@ const Home = () => {
           </motion.div>
         </motion.div>
 
-        {/* Sub-components with enhanced spacing */}
+
         <div className="space-y-16 sm:space-y-24 lg:space-y-32">
           <motion.div variants={itemVariants}>
             <FeaturedAuctions />
