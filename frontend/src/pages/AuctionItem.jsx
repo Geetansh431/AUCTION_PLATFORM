@@ -1,4 +1,3 @@
-import Spinner from "@/custom-components/Spinner";
 import { getAuctionDetail } from "@/store/slices/auctionSlice";
 import { placeBid } from "@/store/slices/bidSlice";
 import { useEffect, useState } from "react";
