@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import SideDrawer from "./layout/SideDrawer"
-import Home from "./pages/Home"
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SideDrawer from "./layout/SideDrawer";
+import Home from "./pages/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SignUp from "./pages/SignUp";
@@ -16,6 +16,8 @@ import Leaderboard from "./pages/Leaderboard";
 import Auctions from "./pages/Auctions";
 import AuctionItem from "./pages/AuctionItem";
 import CreateAuction from "./pages/CreateAuction";
+import ViewMyAuctions from "./pages/ViewMyAuctions";
+import ViewAuctionDetails from "./pages/ViewAuctionDetails";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchUser());
     dispatch(getAllAuctionItems());
-  }, [])
+  }, []);
 
   return (
     <Router>
@@ -39,10 +41,12 @@ const App = () => {
         <Route path="/auctions" element={<Auctions />} />
         <Route path="/auction/item/:id" element={<AuctionItem />} />
         <Route path="/create-auction" element={<CreateAuction />} />
+        <Route path="/view-my-auctions" element={<ViewMyAuctions />} />
+        <Route path="/auction/details/:id" element={<ViewAuctionDetails />} />
       </Routes>
       <ToastContainer position="top-right" />
     </Router>
   );
 };
 
-export default App
+export default App;
