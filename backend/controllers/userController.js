@@ -125,7 +125,11 @@ export const getProfile = catchAsyncErrors(async (req, res, next) => {
 export const logout = catchAsyncErrors(async (req, res, next) => {
     res.status(200).cookie("token", "", {
         expires: new Date(Date.now()),
-        httpOnly: true
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        domain: '.onrender.com',
+        path: '/'
     }).json({
         success: true,
         message: "Logout Successfully"

@@ -19,9 +19,11 @@ config({
 
 
 app.use(cors({
-    origin: ["https://bidbazzar.vercel.app"],
-    methods: ['POST', "GET", "PUT", "DELETE"],
-    credentials: true
+    origin: ["https://bidbazzar.vercel.app", "https://auction-platform-ojz0.onrender.com"],
+    methods: ['POST', "GET", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    exposedHeaders: ['Set-Cookie']
 }))
 
 app.use(cookieParser());
