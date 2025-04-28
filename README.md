@@ -2,7 +2,6 @@
 
 BidBazzar is a sophisticated online auction platform that connects auctioneers and bidders in a seamless, secure, and user-friendly environment. Built with modern technologies and best practices, it offers a comprehensive solution for managing auctions, bids, and payments.
 
-![BidBazzar Dashboard](https://i.imgur.com/example.png)
 
 ## Features
 
@@ -49,7 +48,6 @@ BidBazzar is a sophisticated online auction platform that connects auctioneers a
 - Express.js
 - MongoDB
 - JWT for authentication
-- Socket.io for real-time features
 
 ## Getting Started
 
@@ -62,8 +60,7 @@ BidBazzar is a sophisticated online auction platform that connects auctioneers a
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/bidbazzar.git
-cd bidbazzar
+git clone https://github.com/Geetansh431/AUCTION_PLATFORM
 ```
 
 2. Install dependencies
@@ -79,14 +76,31 @@ npm install
 
 3. Configure environment variables
 ```bash
-# Backend (.env)
-MONGODB_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-PORT=5000
+PORT = 
 
-# Frontend (.env)
-REACT_APP_API_URL=http://localhost:5000
-```
+CLOUDINARY_CLOUD_NAME = 
+
+CLOUDINARY_API_KEY = 
+
+CLOUDINARY_API_SECRET =
+
+MONGO_URI =
+
+JWT_SECRET_KEY = 
+
+JWT_EXPIRE = 
+
+COOKIE_EXPIRE = 
+
+SMTP_HOST = 
+
+SMTP_PORT = 
+
+SMTP_SERVICE = 
+
+SMTP_MAIL = 
+
+SMTP_PASSWORD = 
 
 4. Start the development servers
 ```bash
@@ -128,11 +142,7 @@ bidbazzar/
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+6. 
 ## Acknowledgments
 
 - [React](https://reactjs.org/)
@@ -142,6 +152,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+Linkedin - [@geetansh431](https://www.linkedin.com/in/geetansh-goyal-0b3328263/)
 
-Project Link: [https://github.com/yourusername/bidbazzar](https://github.com/yourusername/bidbazzar)
+Project Link: [https://github.com/geetansh431/bidbazzar](https://github.com/Geetansh431/AUCTION_PLATFORM)
