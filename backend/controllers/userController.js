@@ -123,17 +123,25 @@ export const getProfile = catchAsyncErrors(async (req, res, next) => {
 })
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
-    res.status(200).cookie("token", "", {
+    const cookieOptions = {
         expires: new Date(Date.now()),
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined,
         path: '/'
-    }).json({
-        success: true,
-        message: "Logout Successfully"
-    })
+    };
+
+    // In production, don't set domain to allow cross-domain cookies
+    if (process.env.NODE_ENV === 'production') {
+        cookieOptions.domain = undefined;
+    }
+
+    res.status(200)
+        .cookie("token", "", cookieOptions)
+        .json({
+            success: true,
+            message: "Logout Successfully"
+        });
 })
 
 export const fetchLeaderboard = catchAsyncErrors(async (req, res, next) => {
