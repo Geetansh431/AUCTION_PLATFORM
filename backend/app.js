@@ -19,8 +19,8 @@ config({
 
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
-    methods: ['POST', "GET", "PUT", "DELETE", "OPTIONS"],
+    origin: [process.env.FRONTEND_URL, "https://bidbazzar.vercel.app"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     exposedHeaders: ['Set-Cookie']
