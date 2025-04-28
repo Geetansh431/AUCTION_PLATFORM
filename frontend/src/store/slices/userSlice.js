@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosInstance from "@/utils/axios";
 import { toast } from "react-toastify";
 
 const userSlice = createSlice({
@@ -91,20 +91,16 @@ const userSlice = createSlice({
 export const register = (data) => async (dispatch) => {
     dispatch(userSlice.actions.registerRequest());
     try {
-        const response = await axios.post(
-            "https://auction-platform-ojz0.onrender.com/api/v1/user/register",
-            data,
-            {
-                withCredentials: true,
-                headers: { "Content-Type": "multipart/form-data" },
-            }
-        );
+        const response = await axiosInstance.post("/user/register", data, {
+            withCredentials: true,
+            headers: { "Content-Type": "multipart/form-data" },
+        });
         dispatch(userSlice.actions.registerSuccess(response.data));
         toast.success(response.data.message);
         dispatch(userSlice.actions.clearAllErrors());
     } catch (error) {
         dispatch(userSlice.actions.registerFailed());
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Registration failed");
         dispatch(userSlice.actions.clearAllErrors());
     }
 };
@@ -112,42 +108,34 @@ export const register = (data) => async (dispatch) => {
 export const login = (data) => async (dispatch) => {
     dispatch(userSlice.actions.loginRequest());
     try {
-        const response = await axios.post(
-            "https://auction-platform-ojz0.onrender.com/api/v1/user/login",
-            data,
-            {
-                withCredentials: true,
-                headers: { "Content-Type": "application/json" },
-            }
-        );
+        const response = await axiosInstance.post("/user/login", data);
         dispatch(userSlice.actions.loginSuccess(response.data));
         toast.success(response.data.message);
         dispatch(userSlice.actions.clearAllErrors());
     } catch (error) {
         dispatch(userSlice.actions.loginFailed());
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Login failed");
         dispatch(userSlice.actions.clearAllErrors());
     }
 };
 
 export const logout = () => async (dispatch) => {
     try {
-        const response = await axios.get("https://auction-platform-ojz0.onrender.com/api/v1/user/logout", { withCredentials: true })
+        const response = await axiosInstance.get("/user/logout");
         dispatch(userSlice.actions.logoutSuccess());
         toast.success(response.data.message);
         dispatch(userSlice.actions.clearAllErrors());
     } catch (error) {
         dispatch(userSlice.actions.logoutFailed());
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Logout failed");
         dispatch(userSlice.actions.clearAllErrors());
     }
 };
 
-
 export const fetchUser = () => async (dispatch) => {
     dispatch(userSlice.actions.fetchUserRequest());
     try {
-        const response = await axios.get("https://auction-platform-ojz0.onrender.com/api/v1/user/me", { withCredentials: true })
+        const response = await axiosInstance.get("/user/me");
         dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
         dispatch(userSlice.actions.clearAllErrors());
     } catch (error) {
@@ -156,19 +144,12 @@ export const fetchUser = () => async (dispatch) => {
         console.error(error);
     }
 };
-    
+
 export const fetchLeaderboard = () => async (dispatch) => {
     dispatch(userSlice.actions.fetchLeaderboardRequest());
     try {
-        const response = await axios.get(
-            "https://auction-platform-ojz0.onrender.com/api/v1/user/leaderboard",
-            {
-                withCredentials: true,
-            }
-        );
-        dispatch(
-            userSlice.actions.fetchLeaderboardSuccess(response.data.leaderboard)
-        );
+        const response = await axiosInstance.get("/user/leaderboard");
+        dispatch(userSlice.actions.fetchLeaderboardSuccess(response.data.leaderboard));
         dispatch(userSlice.actions.clearAllErrors());
     } catch (error) {
         dispatch(userSlice.actions.fetchLeaderboardFailed());
