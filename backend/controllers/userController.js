@@ -89,55 +89,29 @@ export const register = catchAsyncErrors(async (req, res, next) => {
         },
     });
 
-    const token = user.getJWTToken();
-
-    res.status(201).cookie("token", token, {
-        expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        domain: '.vercel.app',
-        path: '/'
-    }).json({
-        success: true,
-        user,
-        token,
-    });
+    generateToken(user, "User Registered.", 201, res)
 })
 
 export const login = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return next(new ErrorHandler("Please Enter Email & Password", 400));
+        return next(new ErrorHandler("Please fill full form."))
     }
 
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ email }).select("+password")
 
     if (!user) {
-        return next(new ErrorHandler("Invalid email or password", 401));
+        return next(new ErrorHandler("Invalid credentials.", 400))
     }
 
-    const isPasswordMatched = await user.comparePassword(password);
+    const isPasswordMatch = await user.comparePassword(password);
 
-    if (!isPasswordMatched) {
-        return next(new ErrorHandler("Invalid email or password", 401));
+    if (!isPasswordMatch) {
+        return next(new ErrorHandler("Invalid credentials.", 400))
     }
 
-    const token = user.getJWTToken();
-
-    res.status(200).cookie("token", token, {
-        expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        domain: '.vercel.app',
-        path: '/'
-    }).json({
-        success: true,
-        user,
-        token,
-    });
+    generateToken(user, "Login Successfully", 200, res)
 })
 
 export const getProfile = catchAsyncErrors(async (req, res, next) => {
@@ -152,9 +126,9 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
     res.status(200).cookie("token", "", {
         expires: new Date(Date.now()),
         httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        domain: '.vercel.app',
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined,
         path: '/'
     }).json({
         success: true,
