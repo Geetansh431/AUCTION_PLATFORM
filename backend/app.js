@@ -19,7 +19,9 @@ config({
 
 
 app.use(cors({
-    origin: ["https://bidbazzar.vercel.app"],
+    origin: process.env.NODE_ENV === 'production' 
+        ? ["https://bidbazzar.vercel.app", "https://auction-platform-1asl.onrender.com"]
+        : "http://localhost:3000",
     methods: ['POST', "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
