@@ -19,7 +19,7 @@ config({
 
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: ["https://bidbazzar.vercel.app"],
     methods: ['POST', "GET", "PUT", "DELETE"],
     credentials: true
 }))
