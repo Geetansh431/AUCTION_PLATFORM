@@ -145,10 +145,43 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
 })
 
 export const fetchLeaderboard = catchAsyncErrors(async (req, res, next) => {
-    const users = await User.find({ moneySpent: { $gt: 0 } });
-    const leaderboard = users.sort((a, b) => b.moneySpent - a.moneySpent);
+    const users = await User.aggregate([
+        {
+            $match: {
+                role: "Bidder",
+                moneySpent: { $gt: 0 }
+            }
+        },
+        {
+            $project: {
+                userName: 1,
+                profileImage: 1,
+                moneySpent: 1,
+                auctionsWon: 1,
+                winRate: {
+                    $cond: {
+                        if: { $gt: ["$auctionsWon", 0] },
+                        then: {
+                            $multiply: [
+                                { $divide: ["$auctionsWon", { $add: ["$auctionsWon", 1] }] },
+                                100
+                            ]
+                        },
+                        else: 0
+                    }
+                }
+            }
+        },
+        {
+            $sort: {
+                moneySpent: -1,
+                auctionsWon: -1
+            }
+        }
+    ]);
+
     res.status(200).json({
         success: true,
-        leaderboard,
-    })
+        leaderboard: users
+    });
 })

@@ -23,22 +23,29 @@ export const placeBid = catchAsyncErrors(async (req, res, next) => {
     }
 
     try {
+        const bidderDetail = await User.findById(req.user._id);
+        
+        // Find existing bid for this user in this auction
         const existingBid = await Bid.findOne({
             "bidder.id": req.user._id,
             auctionItem: auctionItem._id,
         });
-        const existingBidInAuction = auctionItem.bids.find(
-            (bid) => bid.userId.toString() == req.user._id.toString()
+
+        // Find existing bid in auction's bids array
+        const existingBidIndex = auctionItem.bids.findIndex(
+            (bid) => bid.userId.toString() === req.user._id.toString()
         );
-        if (existingBid && existingBidInAuction) {
-            existingBidInAuction.amount = amount;
+
+        if (existingBid && existingBidIndex !== -1) {
+            // Update existing bid
             existingBid.amount = amount;
-            await existingBidInAuction.save();
             await existingBid.save();
-            auctionItem.currentBid = amount;
+            
+            // Update bid in auction's bids array
+            auctionItem.bids[existingBidIndex].amount = amount;
         } else {
-            const bidderDetail = await User.findById(req.user._id);
-            const bid = await Bid.create({
+            // Create new bid
+            const newBid = await Bid.create({
                 amount,
                 bidder: {
                     id: bidderDetail._id,
@@ -47,21 +54,26 @@ export const placeBid = catchAsyncErrors(async (req, res, next) => {
                 },
                 auctionItem: auctionItem._id,
             });
+
+            // Add new bid to auction's bids array
             auctionItem.bids.push({
-                userId: req.user._id,
+                userId: bidderDetail._id,
                 userName: bidderDetail.userName,
                 profileImage: bidderDetail.profileImage?.url,
                 amount,
             });
-            auctionItem.currentBid = amount;
         }
+
+        // Update current bid
+        auctionItem.currentBid = amount;
         await auctionItem.save();
+
         res.status(201).json({
             success: true,
-            message: "Bid placed.",
+            message: "Bid placed successfully.",
             currentBid: auctionItem.currentBid,
         });
     } catch (error) {
         return next(new ErrorHandler(error.message || "Failed to place bid.", 500));
     }
-})
+});
