@@ -61,67 +61,67 @@ const CardTwo = ({ imgSrc, title, startingBid, startTime, endTime, id }) => {
       transition={{ duration: 0.5 }}
       className="w-full"
     >
-      <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <img
-            src={imgSrc}
-            alt={title}
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
-        </div>
+        <div className="relative bg-gray-800/40 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-700/50 group-hover:border-gray-600 transition-all duration-300">
+          <div className="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={imgSrc}
+              alt={title}
+              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
+          </div>
 
-        <div className="p-6 space-y-4">
+          <div className="p-6 space-y-4">
           <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors duration-300 truncate">
-            {title}
-          </h3>
+              {title}
+            </h3>
 
-          <div className="space-y-4">
-            {startingBid && (
+            <div className="space-y-4">
+              {startingBid && (
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">Starting Bid</span>
+                  <span className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                    {startingBid}
+                  </span>
+                </div>
+              )}
+
               <div className="flex items-center justify-between">
-                <span className="text-gray-400">Starting Bid</span>
-                <span className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                  {startingBid}
+                <span className="text-gray-400 flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  {timeLeft.type}
+                </span>
+                <span className="text-orange-400 font-medium">
+                  {Object.keys(timeLeft).length > 1
+                    ? formatTimeLeft(timeLeft)
+                    : "Time's up!"}
                 </span>
               </div>
-            )}
-
-            <div className="flex items-center justify-between">
-              <span className="text-gray-400 flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                {timeLeft.type}
-              </span>
-              <span className="text-orange-400 font-medium">
-                {Object.keys(timeLeft).length > 1
-                  ? formatTimeLeft(timeLeft)
-                  : "Time's up!"}
-              </span>
             </div>
           </div>
         </div>
-      </div>
-
+        
       <div className="flex flex-col gap-2 mt-4">
-        <Link
-          to={`/auction/details/${id}`}
+            <Link
+              to={`/auction/details/${id}`}
           className="bg-indigo-600 text-center text-white text-xl px-4 py-2 rounded-md transition-all duration-300 hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/25"
-        >
-          View Auction
-        </Link>
-        <button
-          onClick={handleDeleteAuction}
+            >
+              View Auction
+            </Link>
+            <button
+              onClick={handleDeleteAuction}
           className="bg-red-500 text-center text-white text-xl px-4 py-2 rounded-md transition-all duration-300 hover:bg-red-600 hover:shadow-lg hover:shadow-red-500/25"
-        >
-          Delete Auction
-        </button>
-        <button
-          disabled={new Date(endTime) > Date.now()}
-          onClick={() => setOpenDrawer(true)}
+            >
+              Delete Auction
+            </button>
+            <button
+              disabled={new Date(endTime) > Date.now()}
+              onClick={() => setOpenDrawer(true)}
           className="bg-sky-500 text-center text-white text-xl px-4 py-2 rounded-md transition-all duration-300 hover:bg-sky-600 hover:shadow-lg hover:shadow-sky-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Republish Auction
-        </button>
-      </div>
+            >
+              Republish Auction
+            </button>
+          </div>
 
       <Drawer id={id} openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
     </motion.div>
@@ -145,7 +145,7 @@ const Drawer = ({ setOpenDrawer, openDrawer, id }) => {
     <section
       className={`fixed ${
         openDrawer && id ? "bottom-0" : "-bottom-full"
-      } left-0 w-full transition-all duration-300 h-full bg-[#00000087] flex items-end`}
+      } left-0 w-full transition-all duration-300 h-full bg-[#00000087] flex items-end lg:left-72 lg:w-[calc(100%-18rem)]`}
     >
       <div className="w-full bg-gray-800 rounded-t-2xl p-6">
         <div>

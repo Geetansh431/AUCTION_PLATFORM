@@ -44,8 +44,8 @@ const SideDrawer = () => {
                 <GiHamburgerMenu />
             </button>
 
-            <div className={`w-full sm:w-72 bg-slate-950/95 min-h-screen fixed top-0 ${show ? "left-0" : "-left-full"} transition-all duration-500 lg:left-0 border-r border-slate-800/50 shadow-2xl z-40 backdrop-blur-2xl`}>
-                <div className="h-full flex flex-col p-2">
+            <div className={`w-full sm:w-72 bg-slate-950/95 h-screen fixed top-0 ${show ? "left-0" : "-left-full"} transition-all duration-500 lg:left-0 border-r border-slate-800/50 shadow-2xl z-40 backdrop-blur-2xl flex flex-col`}>
+                <div className="flex-1 flex flex-col p-2 overflow-y-auto">
                     <Link to="/" className="block mb-8 px-4">
                         <h4 className="text-3xl font-black tracking-tight">
                             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent animate-gradient">Bid</span>
@@ -63,6 +63,7 @@ const SideDrawer = () => {
                             <ul className="space-y-1">
                                 <li><NavLink to="/auctions" icon={RiAuctionFill}>Auctions</NavLink></li>
                                 <li><NavLink to="/leaderboard" icon={MdLeaderboard}>Leaderboard</NavLink></li>
+                                {isAuthenticated && <li><NavLink to="/me" icon={FaUserCircle}>Profile</NavLink></li>}
                             </ul>
                         </div>
 

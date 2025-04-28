@@ -54,8 +54,8 @@ const ViewMyAuctions = () => {
           <div className="flex items-center gap-4">
             <RiAuctionFill className="text-4xl text-indigo-400" />
             <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-indigo-200 to-white bg-clip-text text-transparent">
-              My Auctions
-            </h1>
+          My Auctions
+        </h1>
           </div>
           <div className="flex items-center gap-2 text-gray-400">
             <span className="text-sm">Manage your auction listings</span>
@@ -85,15 +85,15 @@ const ViewMyAuctions = () => {
           >
             {myAuctions.length > 0 ? (
               myAuctions.map((element) => (
-                <CardTwo
+                  <CardTwo
                   key={element._id}
-                  title={element.title}
-                  startingBid={element.startingBid}
-                  endTime={element.endTime}
-                  startTime={element.startTime}
-                  imgSrc={element.image?.url}
-                  id={element._id}
-                />
+                    title={element.title}
+                    startingBid={element.startingBid}
+                    endTime={element.endTime}
+                    startTime={element.startTime}
+                    imgSrc={element.image?.url}
+                    id={element._id}
+                  />
               ))
             ) : (
               <motion.div
@@ -106,7 +106,7 @@ const ViewMyAuctions = () => {
                   </div>
                   <h3 className="text-2xl font-bold text-gray-400 mb-2">
                     No Auctions Yet
-                  </h3>
+              </h3>
                   <p className="text-gray-500 mb-6">
                     You haven't created any auctions yet. Start by creating your first auction!
                   </p>
@@ -117,7 +117,7 @@ const ViewMyAuctions = () => {
                     <RiAddLine className="text-xl" />
                     <span className="font-semibold">Create First Auction</span>
                   </Link>
-                </div>
+          </div>
               </motion.div>
             )}
           </motion.div>
