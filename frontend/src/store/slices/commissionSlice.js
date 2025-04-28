@@ -24,7 +24,7 @@ export const postCommissionProof = (data) => async (dispatch) => {
     dispatch(commissionSlice.actions.postCommissionProofRequest());
     try {
         const response = await axios.post(
-            "https://auction-platform-ojz0.onrender.com/api/v1/commission/proof",
+            "http://localhost:4000/api/v1/commission/proof",
             data,
             {
                 withCredentials: true,

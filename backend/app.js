@@ -19,7 +19,7 @@ config({
 
 
 app.use(cors({
-    origin: ["https://bidbazzar.vercel.app", "https://auction-platform-ojz0.onrender.com"],
+    origin: [process.env.FRONTEND_URL],
     methods: ['POST', "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],

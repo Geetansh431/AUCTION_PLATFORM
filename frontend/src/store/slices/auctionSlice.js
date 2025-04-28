@@ -89,7 +89,7 @@ export const getAllAuctionItems = () => async (dispatch) => {
     dispatch(auctionSlice.actions.getAllAuctionItemRequest());
     try {
         const response = await axios.get(
-            "https://auction-platform-ojz0.onrender.com/api/v1/auctionitem/allitems",
+            "http://localhost:4000/api/v1/auctionitem/allitems",
             { withCredentials: true }
         );
         dispatch(
@@ -107,7 +107,7 @@ export const getAuctionDetail = (id) => async (dispatch) => {
     dispatch(auctionSlice.actions.getAuctionDetailRequest());
     try {
         const response = await axios.get(
-            `https://auction-platform-ojz0.onrender.com/api/v1/auctionitem/auction/${id}`,
+            `http://localhost:4000/api/v1/auctionitem/auction/${id}`,
             { withCredentials: true }
         );
         dispatch(auctionSlice.actions.getAuctionDetailSuccess(response.data));
@@ -123,7 +123,7 @@ export const createAuction = (data) => async (dispatch) => {
     dispatch(auctionSlice.actions.createAuctionRequest());
   try {
     const response = await axios.post(
-      "https://auction-platform-ojz0.onrender.com/api/v1/auctionitem/create",
+      "http://localhost:4000/api/v1/auctionitem/create",
       data,
       {
         withCredentials: true,
@@ -145,7 +145,7 @@ export const getMyAuctionItems = () => async (dispatch) => {
     dispatch(auctionSlice.actions.getMyAuctionsRequest());
     try {
       const response = await axios.get(
-        "https://auction-platform-ojz0.onrender.com/api/v1/auctionitem/myitems",
+        "http://localhost:4000/api/v1/auctionitem/myitems",
         { withCredentials: true }
       );
       dispatch(auctionSlice.actions.getMyAuctionsSuccess(response.data.items));
@@ -161,7 +161,7 @@ export const republishAuction = (id, data) => async (dispatch) => {
     dispatch(auctionSlice.actions.republishItemRequest());
     try {
       const response = await axios.put(
-        `https://auction-platform-ojz0.onrender.com/api/v1/auctionitem/item/republish/${id}`,
+        `http://localhost:4000/api/v1/auctionitem/item/republish/${id}`,
         data,
         {
           withCredentials: true,
@@ -185,7 +185,7 @@ export const deleteAuction = (id) => async (dispatch) => {
     dispatch(auctionSlice.actions.deleteAuctionItemRequest());
     try {
       const response = await axios.delete(
-        `https://auction-platform-ojz0.onrender.com/api/v1/auctionitem/delete/${id}`,
+        `http://localhost:4000/api/v1/auctionitem/delete/${id}`,
         {
           withCredentials: true,
         }
