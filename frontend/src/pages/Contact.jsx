@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
@@ -36,7 +36,7 @@ const Contact = () => {
         setLoading(false);
         navigateTo("/");
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("Failed to send message.");
         setLoading(false);
       });

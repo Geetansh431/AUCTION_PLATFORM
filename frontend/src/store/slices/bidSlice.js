@@ -9,19 +9,19 @@ const bidSlice = createSlice({
     loading: false,
   },
   reducers: {
-   bidRequest(state,action){
+   bidRequest(state){
     state.loading = true;
    },
-   bidSuccess(state,action){
+   bidSuccess(state){
     state.loading = false;
    },
-   bidFailed(state,action){
+   bidFailed(state){
     state.loading = false;
    },
+   clearAllBidErrors(state){
+    state.loading = false;
+   }
   },
-  clearAllBidErrors(state,action){
-    state.loading=false;
-  }
 });
 
 export const placeBid = (id,data) => async (dispatch) => {

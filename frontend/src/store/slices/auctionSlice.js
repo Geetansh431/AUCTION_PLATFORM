@@ -13,26 +13,26 @@ const auctionSlice = createSlice({
         allAuctions: [],
     },
     reducers: {
-        createAuctionRequest(state, action) {
+        createAuctionRequest(state) {
             state.loading = true;
         },
-        createAuctionSuccess(state, action) {
+        createAuctionSuccess(state) {
             state.loading = false;
         },
-        createAuctionFailed(state, action) {
+        createAuctionFailed(state) {
             state.loading = false;
         },
-        getAllAuctionItemRequest(state, action) {
+        getAllAuctionItemRequest(state) {
             state.loading = true;
         },
         getAllAuctionItemSuccess(state, action) {
             state.loading = false;
             state.allAuctions = action.payload;
         },
-        getAllAuctionItemFailed(state, action) {
+        getAllAuctionItemFailed(state) {
             state.loading = false;
         },
-        getAuctionDetailRequest(state, action) {
+        getAuctionDetailRequest(state) {
             state.loading = true;
         },
         getAuctionDetailSuccess(state, action) {
@@ -40,12 +40,10 @@ const auctionSlice = createSlice({
             state.auctionDetail = action.payload.auctionItem;
             state.auctionBidders = action.payload.bidders;
         },
-        getAuctionDetailFailed(state, action) {
+        getAuctionDetailFailed(state) {
             state.loading = false;
-            state.auctionDetail = state.auctionDetail;
-            state.auctionBidders = state.auctionBidders;
         },
-        getMyAuctionsRequest(state, action) {
+        getMyAuctionsRequest(state) {
             state.loading = true;
             state.myAuctions = [];
         },
@@ -53,34 +51,30 @@ const auctionSlice = createSlice({
             state.loading = false;
             state.myAuctions = action.payload;
         },
-        getMyAuctionsFailed(state, action) {
+        getMyAuctionsFailed(state) {
             state.loading = false;
             state.myAuctions = [];
         },
-        deleteAuctionItemRequest(state, action) {
+        deleteAuctionItemRequest(state) {
             state.loading = true;
           },
-        deleteAuctionItemSuccess(state, action) {
+        deleteAuctionItemSuccess(state) {
             state.loading = false;
           },
-        deleteAuctionItemFailed(state, action) {
+        deleteAuctionItemFailed(state) {
             state.loading = false;
           },
-        republishItemRequest(state, action) {
+        republishItemRequest(state) {
             state.loading = true;
           },
-        republishItemSuccess(state, action) {
+        republishItemSuccess(state) {
             state.loading = false;
         },
-        republishItemFailed(state, action) {
+        republishItemFailed(state) {
             state.loading = false;
         },
-        resetSlice(state, action) {
+        resetSlice(state) {
             state.loading = false;
-            state.auctionDetail = state.auctionDetail;
-            state.itemDetail = state.itemDetail;
-            state.myAuctions = state.myAuctions;
-            state.allAuctions = state.allAuctions;
         },
     }
 })

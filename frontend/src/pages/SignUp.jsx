@@ -280,7 +280,7 @@ const SignUp = () => {
                 </div>
             </div>
 
-            <style jsx global>{`
+            <style>{`
                 @keyframes fade-in {
                     from { opacity: 0; }
                     to { opacity: 1; }

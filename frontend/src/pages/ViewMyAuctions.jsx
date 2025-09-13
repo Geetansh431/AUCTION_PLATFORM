@@ -1,5 +1,4 @@
 import CardTwo from "@/custom-components/CardTwo";
-import Spinner from "@/custom-components/Spinner";
 import { getMyAuctionItems } from "@/store/slices/auctionSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -108,7 +107,7 @@ const ViewMyAuctions = () => {
                     No Auctions Yet
               </h3>
                   <p className="text-gray-500 mb-6">
-                    You haven't created any auctions yet. Start by creating your first auction!
+                    You haven&apos;t created any auctions yet. Start by creating your first auction!
                   </p>
                   <Link
                     to="/create-auction"

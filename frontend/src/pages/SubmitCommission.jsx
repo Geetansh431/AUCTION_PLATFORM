@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postCommissionProof } from "@/store/slices/commissionSlice";
 import { Upload, DollarSign, MessageSquare, ArrowRight } from "lucide-react";

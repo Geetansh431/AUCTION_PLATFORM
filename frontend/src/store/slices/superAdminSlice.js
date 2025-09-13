@@ -14,7 +14,7 @@ const superAdminSlice = createSlice({
     singlePaymentProof: {},
   },
   reducers: {
-    requestForMonthlyRevenue(state, action) {
+    requestForMonthlyRevenue(state) {
       state.loading = true;
       state.monthlyRevenue = [];
     },
@@ -22,11 +22,11 @@ const superAdminSlice = createSlice({
       state.loading = false;
       state.monthlyRevenue = action.payload;
     },
-    failedForMonthlyRevenue(state, action) {
+    failedForMonthlyRevenue(state) {
       state.loading = false;
       state.monthlyRevenue = [];
     },
-    requestForAllUsers(state, action) {
+    requestForAllUsers(state) {
       state.loading = true;
       state.totalAuctioneers = [];
       state.totalBidders = [];
@@ -36,12 +36,12 @@ const superAdminSlice = createSlice({
       state.totalAuctioneers = action.payload.auctioneersArray;
       state.totalBidders = action.payload.biddersArray;
     },
-    failureForAllUsers(state, action) {
+    failureForAllUsers(state) {
       state.loading = false;
       state.totalAuctioneers = [];
       state.totalBidders = [];
     },
-    requestForPaymentProofs(state, action) {
+    requestForPaymentProofs(state) {
       state.loading = true;
       state.paymentProofs = [];
     },
@@ -49,20 +49,20 @@ const superAdminSlice = createSlice({
       state.loading = false;
       state.paymentProofs = action.payload;
     },
-    failureForPaymentProofs(state, action) {
+    failureForPaymentProofs(state) {
       state.loading = false;
       state.paymentProofs = [];
     },
-    requestForDeletePaymentProof(state, action) {
+    requestForDeletePaymentProof(state) {
       state.loading = true;
     },
-    successForDeletePaymentProof(state, action) {
+    successForDeletePaymentProof(state) {
       state.loading = false;
     },
-    failureForDeletePaymentProof(state, action) {
+    failureForDeletePaymentProof(state) {
       state.loading = false;
     },
-    requestForSinglePaymentProofDetail(state, action) {
+    requestForSinglePaymentProofDetail(state) {
       state.loading = true;
       state.singlePaymentProof = {};
     },
@@ -70,34 +70,30 @@ const superAdminSlice = createSlice({
       state.loading = false;
       state.singlePaymentProof = action.payload;
     },
-    failureForSinglePaymentProofDetail(state, action) {
+    failureForSinglePaymentProofDetail(state) {
       state.loading = false;
       state.singlePaymentProof = {};
     },
-    requestForUpdatePaymentProof(state, action) {
+    requestForUpdatePaymentProof(state) {
       state.loading = true;
     },
-    successForUpdatePaymentProof(state, action) {
+    successForUpdatePaymentProof(state) {
       state.loading = false;
     },
-    failureForUpdatePaymentProof(state, action) {
+    failureForUpdatePaymentProof(state) {
       state.loading = false;
     },
-    requestForAuctionItemDelete(state, action) {
+    requestForAuctionItemDelete(state) {
       state.loading = true;
     },
-    successForAuctionItemDelete(state, action) {
+    successForAuctionItemDelete(state) {
       state.loading = false;
     },
-    failureForAuctionItemDelete(state, action) {
+    failureForAuctionItemDelete(state) {
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.loading = false;
-      state.monthlyRevenue = state.monthlyRevenue;
-      state.paymentProofs = state.paymentProofs;
-      state.totalAuctioneers = state.totalAuctioneers;
-      state.totalBidders = state.totalBidders;
       state.singlePaymentProof = {};
     },
   },

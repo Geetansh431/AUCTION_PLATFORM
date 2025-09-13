@@ -8,13 +8,13 @@ const commissionSlice = createSlice({
         loading: false,
     },
     reducers: {
-        postCommissionProofRequest(state, action) {
+        postCommissionProofRequest(state) {
             state.loading = true;
         },
-        postCommissionProofSuccess(state, action) {
+        postCommissionProofSuccess(state) {
             state.loading = false;
         },
-        postCommissionProofFailed(state, action) {
+        postCommissionProofFailed(state) {
             state.loading = false;
         },
     }

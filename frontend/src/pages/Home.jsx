@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -19,7 +18,7 @@ const Home = () => {
     {
       title: "Place Bids",
       description: "Engage in competitive bidding with real-time updates and automatic bid increments.",
-      icon: Gavel,
+      icon: Gavel,  
       gradient: "from-purple-500 to-pink-500",
       iconColor: "text-purple-400"
     },

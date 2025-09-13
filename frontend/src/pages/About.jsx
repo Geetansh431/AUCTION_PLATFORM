@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 
@@ -164,7 +163,7 @@ const About = () => {
                             Join Us
                         </h3>
                         <p className="text-lg text-gray-400 mb-6">
-                            Whether you're looking to buy, sell, or simply explore, BidBazzar
+                            Whether you&apos;re looking to buy, sell, or simply explore, BidBazzar
                             invites you to join our growing community of auction enthusiasts.
                             Discover new opportunities, uncover hidden gems, and experience the
                             thrill of winning your next great find.

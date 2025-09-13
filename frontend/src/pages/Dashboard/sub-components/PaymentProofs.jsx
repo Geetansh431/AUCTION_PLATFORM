@@ -3,7 +3,7 @@ import {
   getSinglePaymentProofDetail,
   updatePaymentProof,
 } from "@/store/slices/superAdminSlice";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -121,6 +121,7 @@ const PaymentProofs = () => {
 
 export default PaymentProofs;
 
+// eslint-disable-next-line react/prop-types
 export const Drawer = ({ setOpenDrawer, openDrawer }) => {
   const { singlePaymentProof, loading } = useSelector(
     (state) => state.superAdmin
@@ -247,6 +248,7 @@ export const Drawer = ({ setOpenDrawer, openDrawer }) => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 export const ProofViewer = ({ showProof, setShowProof }) => {
   const { singlePaymentProof } = useSelector((state) => state.superAdmin);
 

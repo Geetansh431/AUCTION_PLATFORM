@@ -1,6 +1,4 @@
 import Card from "@/custom-components/Card";
-import Spinner from "@/custom-components/Spinner";
-import React from "react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Gavel, DollarSign, Clock } from "lucide-react";

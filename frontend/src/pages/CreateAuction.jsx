@@ -1,5 +1,5 @@
 import { createAuction } from "@/store/slices/auctionSlice";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
