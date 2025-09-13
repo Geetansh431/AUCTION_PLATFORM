@@ -65,16 +65,30 @@
     @apply border-border;
   }
 
+  html {
+    background: linear-gradient(86deg, rgba(246, 244, 240), #f6f4f0);
+    background-attachment: fixed;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+  }
+
   body {
     @apply bg-background text-foreground;
     background: linear-gradient(86deg, rgba(246, 244, 240), #f6f4f0);
+    background-attachment: fixed;
     overflow-x: hidden;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    margin: 0;
+    padding: 0;
   }
 
   #root {
     overflow-x: hidden;
     width: 100%;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
   }
 }
