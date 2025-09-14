@@ -43,7 +43,7 @@ const userSlice = createSlice({
             state.user = {};
         },
         fetchUserRequest(state) {
-            state.loading = true;
+            // Don't set loading to true for initial auth check to prevent UI blocking
             state.isAuthenticated = false;
             state.user = {};
         },
